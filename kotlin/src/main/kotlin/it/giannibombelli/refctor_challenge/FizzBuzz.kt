@@ -1,15 +1,15 @@
 package it.giannibombelli.refctor_challenge
 
-class FizzBuzz : FizzBuzzInterface {
+class FizzBuzz(private val divisorAndWords: List<DivisorAndWord>) : FizzBuzzInterface {
+
     override fun say(number: Int): String {
-        if (number % 3 == 0 && number % 5 == 0) {
-            return "FizzBuzz"
+        var result = ""
+        for (divisorAndWord in divisorAndWords) {
+            result += divisorAndWord.getWordOrEmpty(number)
         }
-        if (number % 3 == 0) {
-            return "Fizz"
-        }
-        if (number % 5 == 0) {
-            return "Buzz"
+
+        if (result !== "") {
+            return result
         }
 
         return number.toString()
